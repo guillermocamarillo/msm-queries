@@ -1,0 +1,12 @@
+
+<h1>Youngest director</h1>
+
+<% maximum_dob = Director.maximum(:dob) %>  
+<% matching_records = Director.where(:dob => maximum_dob)%>
+<% youngest_director = matching_records.at(0)%>
+<% youngest_director.name%>
+<% date = youngest_director.dob%>
+<% date_format = date.strftime('%B %d, %Y')%>
+
+
+<p>The youngest director in our dataset right now is <a href="/directors/<%= youngest_director.id%>"><%= youngest_director.name%></a>, born <%= date_format%>.</p>
